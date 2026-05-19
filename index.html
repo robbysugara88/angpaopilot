@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0051)file:///C:/Users/hidde/Downloads/angpao-game_2.html -->
+<!-- saved from url=(0043)file:///C:/Users/hidde/Downloads/index.html -->
 <html lang="id"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,6 +70,154 @@
   .picks-counter {
     font-weight: 600;
     color: #993556;
+  }
+
+  /* ============ LOGIN SCREEN ============ */
+  .login-screen {
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .login-icon {
+    font-size: 50px;
+    margin-bottom: 12px;
+  }
+
+  .login-screen h2 {
+    font-size: 20px;
+    color: #501313;
+    margin-bottom: 8px;
+  }
+
+  .login-screen p {
+    font-size: 14px;
+    color: #5F5E5A;
+    margin-bottom: 20px;
+  }
+
+  .input-group {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .username-input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 2px solid #E5C29F;
+    border-radius: 10px;
+    font-family: inherit;
+    background: #FFFFFF;
+    color: #2C2C2A;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .username-input:focus { border-color: #E24B4A; }
+
+  .input-error {
+    color: #C53D3D;
+    font-size: 12px;
+    margin-top: 8px;
+    min-height: 18px;
+    text-align: left;
+  }
+
+  .start-btn {
+    width: 100%;
+    margin-top: 12px;
+    background: #E24B4A;
+    color: #FFF8EC;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .start-btn:hover { background: #C53D3D; }
+  .start-btn:active { transform: scale(0.98); }
+
+  /* ============ ALREADY CLAIMED SCREEN ============ */
+  .already-claimed {
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .already-claimed-icon {
+    font-size: 56px;
+    margin-bottom: 12px;
+  }
+
+  .already-claimed h2 {
+    font-size: 20px;
+    color: #501313;
+    margin-bottom: 8px;
+  }
+
+  .already-claimed .user-pill {
+    display: inline-block;
+    background: #FAEEDA;
+    color: #854F0B;
+    padding: 4px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 6px 0 12px;
+  }
+
+  .already-claimed p {
+    font-size: 14px;
+    color: #5F5E5A;
+    margin-bottom: 8px;
+  }
+
+  .countdown {
+    font-size: 18px;
+    font-weight: 600;
+    color: #3B6D11;
+    background: #FFFFFF;
+    padding: 10px 16px;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 12px 0;
+    border: 1px solid #C0DD97;
+  }
+
+  .switch-user-btn {
+    background: transparent;
+    color: #5F5E5A;
+    border: 1px solid #B4B2A9;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-family: inherit;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .switch-user-btn:hover { background: #F1EFE8; }
+
+  /* ============ GAME SCREEN ============ */
+  .game-screen { display: none; }
+  .game-screen.show { display: block; }
+
+  .user-banner {
+    background: #FAEEDA;
+    color: #854F0B;
+    padding: 8px 14px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .user-banner-name {
+    font-weight: 600;
   }
 
   .envelopes-grid {
@@ -190,6 +338,7 @@
     gap: 10px;
     margin-top: 14px;
     justify-content: center;
+    flex-wrap: wrap;
   }
 
   .btn {
@@ -227,7 +376,7 @@
     margin-top: 12px;
   }
 
-  /* Confetti for jackpot */
+  /* Confetti */
   .confetti-container {
     position: fixed;
     inset: 0;
@@ -254,16 +403,10 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-  }
-
   .envelope:not(.disabled):hover .envelope-inner {
     transform: translateY(-4px);
   }
 
-  /* Responsive */
   @media (max-width: 480px) {
     h1 { font-size: 22px; }
     .envelopes-grid { gap: 10px; }
@@ -286,94 +429,57 @@
   <div class="header">
     <div class="badge">FESTIVE GIVEAWAY</div>
     <h1>Pilih Angpao Keberuntunganmu!</h1>
-    <p class="subtitle" id="subtitle">
-      Kamu punya <span class="picks-counter" id="picks-left">3</span> kesempatan memilih
+    <p class="subtitle" id="header-subtitle">1 username = 1 kesempatan per hari</p>
+  </div>
+
+  <!-- ============ LOGIN SCREEN ============ -->
+  <div class="login-screen" id="login-screen" style="display: block;">
+    <div class="login-icon">🧧</div>
+    <h2>Masukkan Username Kamu</h2>
+    <p>Untuk klaim cashback hari ini</p>
+    <div class="input-group">
+      <input type="text" class="username-input" id="username-input" placeholder="Contoh: budi_jakarta" maxlength="20" autocomplete="off">
+      <div class="input-error" id="input-error"></div>
+      <button class="start-btn" id="start-btn">Mulai Bermain</button>
+    </div>
+    <p style="margin-top: 16px; font-size: 11px; color: #888780;">
+      Username 3-20 karakter, huruf/angka/underscore saja
     </p>
   </div>
 
-  <div class="envelopes-grid" id="envelopes"><div class="envelope" data-index="0" role="button" tabindex="0" aria-label="Angpao 1">
-        <div class="envelope-inner" style="background: #E24B4A;">
-          <div class="envelope-seal" style="background: #FAC775; color: #A32D2D;">福</div>
-        </div>
-        <div class="envelope-prize" style="border: 1px solid #A32D2D;">
-          <div class="prize-label">CASHBACK</div>
-          <div class="prize-amount" style="color: #A32D2D;"></div>
-        </div>
-      </div><div class="envelope" data-index="1" role="button" tabindex="0" aria-label="Angpao 2">
-        <div class="envelope-inner" style="background: #D4537E;">
-          <div class="envelope-seal" style="background: #FAC775; color: #993556;">福</div>
-        </div>
-        <div class="envelope-prize" style="border: 1px solid #993556;">
-          <div class="prize-label">CASHBACK</div>
-          <div class="prize-amount" style="color: #993556;"></div>
-        </div>
-      </div><div class="envelope" data-index="2" role="button" tabindex="0" aria-label="Angpao 3">
-        <div class="envelope-inner" style="background: #BA7517;">
-          <div class="envelope-seal" style="background: #FFF8EC; color: #854F0B;">福</div>
-        </div>
-        <div class="envelope-prize" style="border: 1px solid #854F0B;">
-          <div class="prize-label">CASHBACK</div>
-          <div class="prize-amount" style="color: #854F0B;"></div>
-        </div>
-      </div><div class="envelope" data-index="3" role="button" tabindex="0" aria-label="Angpao 4">
-        <div class="envelope-inner" style="background: #639922;">
-          <div class="envelope-seal" style="background: #FAC775; color: #3B6D11;">福</div>
-        </div>
-        <div class="envelope-prize" style="border: 1px solid #3B6D11;">
-          <div class="prize-label">CASHBACK</div>
-          <div class="prize-amount" style="color: #3B6D11;"></div>
-        </div>
-      </div><div class="envelope" data-index="4" role="button" tabindex="0" aria-label="Angpao 5">
-        <div class="envelope-inner" style="background: #378ADD;">
-          <div class="envelope-seal" style="background: #FAC775; color: #185FA5;">福</div>
-        </div>
-        <div class="envelope-prize" style="border: 1px solid #185FA5;">
-          <div class="prize-label">CASHBACK</div>
-          <div class="prize-amount" style="color: #185FA5;"></div>
-        </div>
-      </div><div class="envelope" data-index="5" role="button" tabindex="0" aria-label="Angpao 6">
-        <div class="envelope-inner" style="background: #7F77DD;">
-          <div class="envelope-seal" style="background: #FAC775; color: #534AB7;">福</div>
-        </div>
-        <div class="envelope-prize" style="border: 1px solid #534AB7;">
-          <div class="prize-label">CASHBACK</div>
-          <div class="prize-amount" style="color: #534AB7;"></div>
-        </div>
-      </div><div class="envelope" data-index="6" role="button" tabindex="0" aria-label="Angpao 7">
-        <div class="envelope-inner" style="background: #1D9E75;">
-          <div class="envelope-seal" style="background: #FAC775; color: #0F6E56;">福</div>
-        </div>
-        <div class="envelope-prize" style="border: 1px solid #0F6E56;">
-          <div class="prize-label">CASHBACK</div>
-          <div class="prize-amount" style="color: #0F6E56;"></div>
-        </div>
-      </div><div class="envelope" data-index="7" role="button" tabindex="0" aria-label="Angpao 8">
-        <div class="envelope-inner" style="background: #D85A30;">
-          <div class="envelope-seal" style="background: #FFF8EC; color: #993C1D;">福</div>
-        </div>
-        <div class="envelope-prize" style="border: 1px solid #993C1D;">
-          <div class="prize-label">CASHBACK</div>
-          <div class="prize-amount" style="color: #993C1D;"></div>
-        </div>
-      </div><div class="envelope" data-index="8" role="button" tabindex="0" aria-label="Angpao 9">
-        <div class="envelope-inner" style="background: #534AB7;">
-          <div class="envelope-seal" style="background: #FAC775; color: #3C3489;">福</div>
-        </div>
-        <div class="envelope-prize" style="border: 1px solid #3C3489;">
-          <div class="prize-label">CASHBACK</div>
-          <div class="prize-amount" style="color: #3C3489;"></div>
-        </div>
-      </div></div>
+  <!-- ============ ALREADY CLAIMED SCREEN ============ -->
+  <div class="already-claimed" id="already-claimed" style="display: none;">
+    <div class="already-claimed-icon">⏰</div>
+    <h2>Sudah Klaim Hari Ini</h2>
+    <div class="user-pill" id="claimed-username"></div>
+    <p>Kamu mendapatkan <strong id="claimed-amount" style="color: #3B6D11;">Rp 0</strong> hari ini</p>
+    <p>Coba lagi dalam:</p>
+    <div class="countdown" id="countdown">00:00:00</div>
+    <p style="font-size: 12px;">Reset setiap jam 00:00 WIB</p>
+    <button class="switch-user-btn" id="switch-user-btn">Ganti Username</button>
+  </div>
 
-  <div class="result-board" id="result-board">
-    <div class="result-card">
-      <p class="result-label">Total cashback kamu</p>
-      <p class="total-display" id="total-display">Rp 0</p>
-      <div class="breakdown" id="breakdown"></div>
+  <!-- ============ GAME SCREEN ============ -->
+  <div class="game-screen" id="game-screen">
+    <div class="user-banner">
+      <span>👋 Halo, <span class="user-banner-name" id="game-username"></span></span>
+      <span>Sisa: <span class="picks-counter" id="picks-left">3</span> pilihan</span>
     </div>
-    <div class="actions">
-      <button class="btn btn-primary" id="claim-btn">Klaim Sekarang</button>
-      <button class="btn btn-secondary" id="reset-btn">Main Lagi</button>
+
+    <div class="envelopes-grid" id="envelopes"></div>
+
+    <div class="result-board" id="result-board">
+      <div class="result-card">
+        <p class="result-label">Total cashback kamu hari ini</p>
+        <p class="total-display" id="total-display">Rp 0</p>
+        <div class="breakdown" id="breakdown"></div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" id="claim-btn">Klaim Sekarang</button>
+      </div>
+      <p style="text-align: center; font-size: 11px; color: #888780; margin-top: 10px;">
+        Kamu bisa main lagi besok dengan username yang sama
+      </p>
     </div>
   </div>
 
@@ -384,6 +490,97 @@
 
 <script>
 (function(){
+
+  // ============================================
+  // KONFIGURASI HADIAH
+  // ============================================
+  const prizes = [
+    {amount: 5000,  weight: 38, label: 'Rp 5rb'},
+    {amount: 10000, weight: 28, label: 'Rp 10rb'},
+    {amount: 15000, weight: 15, label: 'Rp 15rb'},
+    {amount: 20000, weight: 10, label: 'Rp 20rb'},
+    {amount: 25000, weight: 5,  label: 'Rp 25rb'},
+    {amount: 50000, weight: 4,  label: 'Rp 50rb'}
+  ];
+
+  const MAX_PICKS = 3;
+  const NUM_ENVELOPES = 9;
+  const STORAGE_KEY = 'angpao_claims_v1';
+  // Ganti dengan nomor WA bisnis kamu (format: 62xxx, tanpa + atau 0)
+  const WHATSAPP_NUMBER = '6281234567890';
+
+  // ============================================
+  // STORAGE HELPERS (localStorage based)
+  // ============================================
+  function getClaims(){
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch(e){
+      return {};
+    }
+  }
+
+  function saveClaim(username, amount, breakdown){
+    const claims = getClaims();
+    claims[username] = {
+      date: getTodayKey(),
+      amount: amount,
+      breakdown: breakdown,
+      timestamp: Date.now()
+    };
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(claims));
+    } catch(e){
+      console.warn('Gagal simpan claim:', e);
+    }
+  }
+
+  function getTodayKey(){
+    // Format YYYY-MM-DD berdasar waktu lokal user
+    const d = new Date();
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    const dd = String(d.getDate()).padStart(2, '0');
+    return yyyy + '-' + mm + '-' + dd;
+  }
+
+  function hasClaimedToday(username){
+    const claims = getClaims();
+    const userClaim = claims[username];
+    if (!userClaim) return null;
+    if (userClaim.date !== getTodayKey()) return null;
+    return userClaim;
+  }
+
+  function getTimeUntilMidnight(){
+    const now = new Date();
+    const midnight = new Date(now);
+    midnight.setHours(24, 0, 0, 0);
+    const diff = midnight - now;
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    return String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+  }
+
+  function validateUsername(u){
+    if (!u || u.length < 3) return 'Username minimal 3 karakter';
+    if (u.length > 20) return 'Username maksimal 20 karakter';
+    if (!/^[a-zA-Z0-9_]+$/.test(u)) return 'Hanya boleh huruf, angka, dan underscore';
+    return null;
+  }
+
+  // ============================================
+  // GAME STATE
+  // ============================================
+  let currentUsername = '';
+  let picksLeft = MAX_PICKS;
+  let totalWon = 0;
+  let breakdown = [];
+  let opened = new Array(NUM_ENVELOPES).fill(false);
+  let countdownInterval = null;
+
   const colors = [
     {bg: '#E24B4A', shadow: '#A32D2D', seal: '#FAC775', sealText: '#A32D2D'},
     {bg: '#D4537E', shadow: '#993556', seal: '#FAC775', sealText: '#993556'},
@@ -396,17 +593,33 @@
     {bg: '#534AB7', shadow: '#3C3489', seal: '#FAC775', sealText: '#3C3489'}
   ];
 
-  // Probability-weighted prizes. Range Rp 5rb - Rp 50rb.
-  // PENTING: Logika ini di client-side, mudah dimanipulasi.
-  // Untuk production, pindahkan ke server (lihat catatan di akhir file).
-  const prizes = [
-    {amount: 5000,  weight: 38, label: 'Rp 5rb'},
-    {amount: 10000, weight: 28, label: 'Rp 10rb'},
-    {amount: 15000, weight: 15, label: 'Rp 15rb'},
-    {amount: 20000, weight: 10, label: 'Rp 20rb'},
-    {amount: 25000, weight: 5,  label: 'Rp 25rb'},
-    {amount: 50000, weight: 4,  label: 'Rp 50rb'}
-  ];
+  // ============================================
+  // DOM REFS
+  // ============================================
+  const loginScreen = document.getElementById('login-screen');
+  const alreadyClaimed = document.getElementById('already-claimed');
+  const gameScreen = document.getElementById('game-screen');
+  const usernameInput = document.getElementById('username-input');
+  const inputError = document.getElementById('input-error');
+  const startBtn = document.getElementById('start-btn');
+  const switchUserBtn = document.getElementById('switch-user-btn');
+  const gameUsername = document.getElementById('game-username');
+  const claimedUsername = document.getElementById('claimed-username');
+  const claimedAmount = document.getElementById('claimed-amount');
+  const countdownEl = document.getElementById('countdown');
+  const container = document.getElementById('envelopes');
+  const picksLeftEl = document.getElementById('picks-left');
+  const resultBoard = document.getElementById('result-board');
+  const totalDisplay = document.getElementById('total-display');
+  const breakdownEl = document.getElementById('breakdown');
+  const confettiContainer = document.getElementById('confetti-container');
+
+  // ============================================
+  // HELPERS
+  // ============================================
+  function rupiah(n){
+    return 'Rp ' + n.toLocaleString('id-ID');
+  }
 
   function drawPrize(){
     const total = prizes.reduce((s,p)=>s+p.weight,0);
@@ -418,32 +631,13 @@
     return prizes[0];
   }
 
-  const MAX_PICKS = 3;
-  const NUM_ENVELOPES = 9;
-  let picksLeft = MAX_PICKS;
-  let totalWon = 0;
-  let breakdown = [];
-  let opened = new Array(NUM_ENVELOPES).fill(false);
-
-  const container = document.getElementById('envelopes');
-  const picksLeftEl = document.getElementById('picks-left');
-  const resultBoard = document.getElementById('result-board');
-  const totalDisplay = document.getElementById('total-display');
-  const breakdownEl = document.getElementById('breakdown');
-  const subtitle = document.getElementById('subtitle');
-  const confettiContainer = document.getElementById('confetti-container');
-
-  function rupiah(n){
-    return 'Rp ' + n.toLocaleString('id-ID');
-  }
-
   function fireConfetti(){
-    const confettiColors = ['#E24B4A', '#FAC775', '#97C459', '#85B7EB', '#D4537E', '#7F77DD'];
+    const c_colors = ['#E24B4A', '#FAC775', '#97C459', '#85B7EB', '#D4537E', '#7F77DD'];
     for (let i = 0; i < 60; i++){
       const c = document.createElement('div');
       c.className = 'confetti';
       c.style.left = Math.random() * 100 + '%';
-      c.style.background = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+      c.style.background = c_colors[Math.floor(Math.random() * c_colors.length)];
       c.style.animationDelay = Math.random() * 0.5 + 's';
       c.style.animationDuration = (2 + Math.random() * 2) + 's';
       if (Math.random() > 0.5) c.style.borderRadius = '50%';
@@ -452,6 +646,65 @@
     }
   }
 
+  function showScreen(screen){
+    loginScreen.style.display = 'none';
+    alreadyClaimed.style.display = 'none';
+    gameScreen.classList.remove('show');
+    if (countdownInterval){ clearInterval(countdownInterval); countdownInterval = null; }
+
+    if (screen === 'login') loginScreen.style.display = 'block';
+    else if (screen === 'claimed') alreadyClaimed.style.display = 'block';
+    else if (screen === 'game') gameScreen.classList.add('show');
+  }
+
+  // ============================================
+  // LOGIN HANDLER
+  // ============================================
+  function handleLogin(){
+    const raw = usernameInput.value.trim();
+    const err = validateUsername(raw);
+    if (err){
+      inputError.textContent = err;
+      return;
+    }
+    inputError.textContent = '';
+    currentUsername = raw.toLowerCase();
+
+    const existing = hasClaimedToday(currentUsername);
+    if (existing){
+      showAlreadyClaimed(existing);
+    } else {
+      startGame();
+    }
+  }
+
+  function showAlreadyClaimed(claimData){
+    claimedUsername.textContent = '@' + currentUsername;
+    claimedAmount.textContent = rupiah(claimData.amount);
+    showScreen('claimed');
+
+    function tick(){
+      countdownEl.textContent = getTimeUntilMidnight();
+    }
+    tick();
+    countdownInterval = setInterval(tick, 1000);
+  }
+
+  function startGame(){
+    picksLeft = MAX_PICKS;
+    totalWon = 0;
+    breakdown = [];
+    opened = new Array(NUM_ENVELOPES).fill(false);
+    picksLeftEl.textContent = picksLeft;
+    gameUsername.textContent = '@' + currentUsername;
+    resultBoard.classList.remove('show');
+    buildEnvelopes();
+    showScreen('game');
+  }
+
+  // ============================================
+  // GAME LOGIC
+  // ============================================
   function buildEnvelopes(){
     container.innerHTML = '';
     for (let i = 0; i < NUM_ENVELOPES; i++){
@@ -462,15 +715,14 @@
       wrap.setAttribute('role', 'button');
       wrap.setAttribute('tabindex', '0');
       wrap.setAttribute('aria-label', 'Angpao ' + (i+1));
-      wrap.innerHTML = `
-        <div class="envelope-inner" style="background: ${c.bg};">
-          <div class="envelope-seal" style="background: ${c.seal}; color: ${c.sealText};">福</div>
-        </div>
-        <div class="envelope-prize" style="border: 1px solid ${c.shadow};">
-          <div class="prize-label">CASHBACK</div>
-          <div class="prize-amount" style="color: ${c.shadow};"></div>
-        </div>
-      `;
+      wrap.innerHTML =
+        '<div class="envelope-inner" style="background: ' + c.bg + ';">' +
+          '<div class="envelope-seal" style="background: ' + c.seal + '; color: ' + c.sealText + ';">福</div>' +
+        '</div>' +
+        '<div class="envelope-prize" style="border: 1px solid ' + c.shadow + ';">' +
+          '<div class="prize-label">CASHBACK</div>' +
+          '<div class="prize-amount" style="color: ' + c.shadow + ';"></div>' +
+        '</div>';
       wrap.addEventListener('click', () => openEnvelope(i, wrap));
       wrap.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' '){
@@ -510,53 +762,61 @@
       });
     }, 200);
 
-    // Confetti untuk hadiah terbesar
     if (prize.amount >= 50000){
       setTimeout(fireConfetti, 400);
     }
 
     if (picksLeft === 0){
-      setTimeout(showResults, 800);
+      setTimeout(finishGame, 800);
     }
   }
 
-  function showResults(){
-    subtitle.innerHTML = 'Semua kesempatan terpakai! 🎉';
+  function finishGame(){
+    // Simpan ke localStorage — KLAIM TIDAK BISA DIULANG HARI INI
+    saveClaim(currentUsername, totalWon, breakdown);
+
     totalDisplay.textContent = rupiah(totalWon);
     breakdownEl.innerHTML = breakdown.map(b =>
-      `<span class="breakdown-pill">${b}</span>`
+      '<span class="breakdown-pill">' + b + '</span>'
     ).join('');
     resultBoard.classList.add('show');
 
-    // Confetti besar untuk hadiah total tinggi
     if (totalWon >= 75000) fireConfetti();
   }
 
-  function reset(){
-    picksLeft = MAX_PICKS;
-    totalWon = 0;
-    breakdown = [];
-    opened = new Array(NUM_ENVELOPES).fill(false);
-    picksLeftEl.textContent = picksLeft;
-    subtitle.innerHTML = 'Kamu punya <span class="picks-counter" id="picks-left">' + MAX_PICKS + '</span> kesempatan memilih';
-    resultBoard.classList.remove('show');
-    buildEnvelopes();
-  }
-
-  document.getElementById('reset-btn').addEventListener('click', reset);
-
-  document.getElementById('claim-btn').addEventListener('click', () => {
-    // GANTI BAGIAN INI dengan integrasi backend / form klaim Anda
-    // Contoh: redirect ke form WhatsApp atau halaman klaim
-    const message = encodeURIComponent(
-      'Halo, saya menang cashback ' + rupiah(totalWon) +
-      ' dari giveaway angpao!\nBreakdown: ' + breakdown.join(', ')
-    );
-    // Ganti 6281234567890 dengan nomor WhatsApp bisnis Anda
-    window.open('https://wa.me/6281234567890?text=' + message, '_blank');
+  // ============================================
+  // EVENT LISTENERS
+  // ============================================
+  startBtn.addEventListener('click', handleLogin);
+  usernameInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') handleLogin();
+  });
+  usernameInput.addEventListener('input', () => {
+    inputError.textContent = '';
   });
 
-  buildEnvelopes();
+  switchUserBtn.addEventListener('click', () => {
+    currentUsername = '';
+    usernameInput.value = '';
+    inputError.textContent = '';
+    showScreen('login');
+    setTimeout(() => usernameInput.focus(), 100);
+  });
+
+  document.getElementById('claim-btn').addEventListener('click', () => {
+    const message = encodeURIComponent(
+      'Halo, saya ' + currentUsername + ' menang cashback ' + rupiah(totalWon) +
+      ' dari giveaway angpao hari ini!\nBreakdown: ' + breakdown.join(', ')
+    );
+    window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + message, '_blank');
+  });
+
+  // ============================================
+  // INIT
+  // ============================================
+  showScreen('login');
+  setTimeout(() => usernameInput.focus(), 200);
+
 })();
 </script>
 
